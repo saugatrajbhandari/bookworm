@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities{
+    .label{
+        @apply text-lg text-neutral-500 font-bold block mb-2;
+    }
+
+    .input{
+        @apply p-4 border-neutral-300 border-2 rounded-xl;
+    }
+    .button{
+        @apply p-4 bg-primary-main rounded-2xl;
+    }
+
+    .button-text{
+        @apply font-bold text-lg text-white text-center 
+    }
+}
