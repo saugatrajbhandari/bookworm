@@ -99,4 +99,4 @@ export default function Home() {
       </footer>
     </div>
   );
-}
+:Lazy syn:Lazy syn:Lazy syn:Lazy syn:Lazy syn:Lazy syncccccc}

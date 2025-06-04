@@ -6,36 +6,63 @@ import {
   Platform,
 } from "react-native";
 import React from "react";
-import Button from "./ui/button";
-import { Link } from "expo-router";
+import { schema as loginSchema } from "./login-form";
 import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Link } from "expo-router";
+import Button from "./ui/button";
 
-export const schema = z.object({
-  email: z.string().min(1, "Email is required").email("Email must be valid"),
-  password: z.string().min(8, "Password length must be minimum 8"),
+const schema = loginSchema.extend({
+  fullName: z.string().min(1, "FullName is required"),
 });
 
-export default function LoginForm() {
+export default function SignupForm() {
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    defaultValues: { email: "", password: "" },
+    defaultValues: {
+      email: "",
+      fullName: "",
+      password: "",
+    },
     resolver: zodResolver(schema),
   });
 
   const onSubmit = () => {
-    console.log("submit");
+    console.log("signup");
   };
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : undefined}
+      className=" flex-1 justify-between"
     >
-      <View className="border-2 p-6 rounded-2xl bg-neutral-50 border-neutral-200  gap-6">
+      <View className="gap-6">
+        <View>
+          <Text className="label">Full Name</Text>
+          <Controller
+            control={control}
+            name="fullName"
+            render={({ field: { onBlur, value, onChange } }) => (
+              <TextInput
+                placeholder="Enter your fullname"
+                className="input"
+                onBlur={onBlur}
+                value={value}
+                onChangeText={onChange}
+              />
+            )}
+          />
+          {errors.fullName && (
+            <Text className="text-red-500 mt-1 text-sm">
+              {errors.fullName.message}
+            </Text>
+          )}
+        </View>
+
         <View>
           <Text className="label">Email</Text>
           <Controller
@@ -80,18 +107,20 @@ export default function LoginForm() {
             </Text>
           )}
         </View>
+      </View>
 
-        <Button title="Login" onClick={handleSubmit(onSubmit)} />
+      <View>
+        <Button title="Signup" onClick={handleSubmit(onSubmit)} />
 
         <View className="flex-row justify-center items-center">
           <Text className="text-lg font-semibold text-neutral-400">
-            Don&apos;t have an account?{" "}
+            Already have an account?{" "}
           </Text>
           <Link
-            href={"/(public)/signup"}
+            href={"/(public)/login"}
             className="font-semibold text-primary-main text-lg"
           >
-            Sign Up
+            Login
           </Link>
         </View>
       </View>

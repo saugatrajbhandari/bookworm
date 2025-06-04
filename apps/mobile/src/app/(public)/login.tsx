@@ -1,7 +1,7 @@
-import { Image, Text } from "react-native";
+import { Image } from "react-native";
 import React from "react";
 import Container from "@/src/components/container";
-import { SafeAreaView } from "react-native-safe-area-context";
+
 import LoginForm from "@/src/components/login-form";
 // import bookImg from "@/src/assets/images/book.j";
 
