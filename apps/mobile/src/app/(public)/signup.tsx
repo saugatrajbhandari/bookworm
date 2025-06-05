@@ -1,4 +1,4 @@
-import { View, Text, KeyboardAvoidingView, Platform } from "react-native";
+import { View, Text } from "react-native";
 import React from "react";
 import Container from "@/src/components/container";
 import SignupForm from "@/src/components/signup-form";
