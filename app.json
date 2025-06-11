@@ -1,5 +1,8 @@
 {
   "ios": {
     "bundleIdentifier": "com.anonymous.bookworm"
+  },
+  "android": {
+    "package": "com.anonymous.bookworm"
   }
 }
