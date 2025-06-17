@@ -19,6 +19,7 @@ export default function _layout() {
         name="add-book"
         options={{
           title: "Add Book",
+          headerShown: false,
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name="plus-circle" color={color} />
           ),
