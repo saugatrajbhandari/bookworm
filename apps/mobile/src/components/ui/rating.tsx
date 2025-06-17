@@ -22,7 +22,7 @@ export default function Rating() {
           <FontAwesome
             name={rating > index ? "star" : "star-o"}
             color={rating > index ? "#F8B702" : "#335F30"}
-            size={24}
+            size={28}
           />
         </Pressable>
       ))}

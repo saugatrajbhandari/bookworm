@@ -28,6 +28,16 @@ export default function AddBook() {
               <Text className="label">Your Rating</Text>
               <Rating />
             </View>
+            <View>
+              <Text className="label">Caption</Text>
+              <TextInput
+                className="input min-h-20"
+                style={{ textAlignVertical: "top" }}
+                multiline={true}
+                numberOfLines={20}
+                placeholder="Write a review or thoughts about this book...."
+              />
+            </View>
           </View>
         </View>
       </ScrollView>
