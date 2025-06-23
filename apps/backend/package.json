@@ -25,6 +25,7 @@
     "@nestjs/platform-express": "^11.0.1",
     "@prisma/client": "^6.10.1",
     "@repo/ui": "workspace:*",
+    "@types/bcrypt": "^5.0.2",
     "nestjs-zod": "^4.3.1",
     "prisma": "^6.10.1",
     "reflect-metadata": "^0.2.2",
