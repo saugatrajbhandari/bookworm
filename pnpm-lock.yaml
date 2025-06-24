@@ -26,6 +26,9 @@ importers:
       '@nestjs/core':
         specifier: ^11.0.1
         version: 11.1.3(@nestjs/common@11.1.3(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.3)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/jwt':
+        specifier: ^11.0.0
+        version: 11.0.0(@nestjs/common@11.1.3(reflect-metadata@0.2.2)(rxjs@7.8.2))
       '@nestjs/platform-express':
         specifier: ^11.0.1
         version: 11.1.3(@nestjs/common@11.1.3(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.3)
@@ -38,15 +41,6 @@ importers:
       '@types/bcrypt':
         specifier: ^5.0.2
         version: 5.0.2
-      '@types/jsonwebtoken':
-        specifier: ^9.0.10
-        version: 9.0.10
-      bcrypt:
-        specifier: ^6.0.0
-        version: 6.0.0
-      jsonwebtoken:
-        specifier: ^9.0.2
-        version: 9.0.2
       nestjs-zod:
         specifier: ^4.3.1
         version: 4.3.1(@nestjs/common@11.1.3(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.3(@nestjs/common@11.1.3(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.3)(reflect-metadata@0.2.2)(rxjs@7.8.2))(zod@3.25.51)
@@ -1650,6 +1644,11 @@ packages:
       '@nestjs/websockets':
         optional: true
 
+  '@nestjs/jwt@11.0.0':
+    resolution: {integrity: sha512-v7YRsW3Xi8HNTsO+jeHSEEqelX37TVWgwt+BcxtkG/OfXJEOs6GZdbdza200d6KqId1pJQZ6UPj1F0M6E+mxaA==}
+    peerDependencies:
+      '@nestjs/common': ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0
+
   '@nestjs/platform-express@11.1.3':
     resolution: {integrity: sha512-hEDNMlaPiBO72fxxX/CuRQL3MEhKRc/sIYGVoXjrnw6hTxZdezvvM6A95UaLsYknfmcZZa/CdG1SMBZOu9agHQ==}
     peerDependencies:
@@ -2139,8 +2138,8 @@ packages:
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
-  '@types/jsonwebtoken@9.0.10':
-    resolution: {integrity: sha512-asx5hIG9Qmf/1oStypjanR7iKTv0gXQ1Ov/jfrX6kS/EO0OFni8orbmGCn0672NHR3kXHwpAwR+B368ZGN/2rA==}
+  '@types/jsonwebtoken@9.0.7':
+    resolution: {integrity: sha512-ugo316mmTYBl2g81zDFnZ7cfxlut3o+/EQdaP7J8QN2kY6lJ22hmQYCK5EHcJHbrW+dkCGSCPgbG8JtYj6qSrg==}
 
   '@types/methods@1.1.4':
     resolution: {integrity: sha512-ymXWVrDiCxTBE3+RIrrP533E70eA+9qu7zdWoHuOmGujkYtzf4HQF96b8nwHLqhuf4ykX61IGRIB38CC6/sImQ==}
@@ -2150,9 +2149,6 @@ packages:
 
   '@types/minimatch@5.1.2':
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
-
-  '@types/ms@2.1.0':
-    resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
   '@types/node@22.15.3':
     resolution: {integrity: sha512-lX7HFZeHf4QG/J7tBZqrCAXwz9J5RD56Y6MpP0eJkka8p+K0RY/yBTW7CYFJ4VGCclxqOLKmiGP5juQc6MKgcw==}
@@ -2708,10 +2704,6 @@ packages:
   basic-ftp@5.0.5:
     resolution: {integrity: sha512-4Bcg1P8xhUuqcii/S0Z9wiHIrQVPMermM1any+MX5GeGD7faD3/msQUDGLol9wOcz4/jbg/WJnGqoJF6LiBdtg==}
     engines: {node: '>=10.0.0'}
-
-  bcrypt@6.0.0:
-    resolution: {integrity: sha512-cU8v/EGSrnH+HnxV2z0J7/blxH8gq7Xh2JFT6Aroax7UohdmiJJlxApMxtKfuI7z68NvvVcmR78k2LbT6efhRg==}
-    engines: {node: '>= 18'}
 
   better-opn@3.0.2:
     resolution: {integrity: sha512-aVNobHnJqLiUelTaHat9DZ1qM2w0C0Eym4LPI/3JxOnSokGVdsl1T1kN7TFvsEAD8G47A6VKQ0TVHqbBnYMJlQ==}
@@ -5156,10 +5148,6 @@ packages:
   node-abort-controller@3.1.1:
     resolution: {integrity: sha512-AGK2yQKIjRuqnc6VkX2Xj5d+QW8xZ87pa1UK6yA6ouUyuxfHuMP6umE5QK7UmTeOAymo+Zx1Fxiuw9rVx8taHQ==}
 
-  node-addon-api@8.4.0:
-    resolution: {integrity: sha512-D9DI/gXHvVmjHS08SVch0Em8G5S1P+QWtU31appcKT/8wFSPRcdHadIFSAntdMMVM5zz+/DL+bL/gz3UDppqtg==}
-    engines: {node: ^18 || ^20 || >= 21}
-
   node-emoji@1.11.0:
     resolution: {integrity: sha512-wo2DpQkQp7Sjm2A0cq+sN7EHKO6Sl0ctXeBdFZrL9T9+UywORbufTcTZxom8YqpLQt/FqNMUkOpkZrJVYSKD3A==}
 
@@ -5175,10 +5163,6 @@ packages:
   node-forge@1.3.1:
     resolution: {integrity: sha512-dPEtOeMvF9VMcYV/1Wb8CPoVAXtp6MKMlcbAt4ddqmGqUJ6fQZFXkNZNkNlfevtNkGtaSoXf/vNNNSvgrdXwtA==}
     engines: {node: '>= 6.13.0'}
-
-  node-gyp-build@4.8.4:
-    resolution: {integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==}
-    hasBin: true
 
   node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
@@ -7795,7 +7779,7 @@ snapshots:
       jimp-compact: 0.16.1
       parse-png: 2.1.0
       resolve-from: 5.0.0
-      semver: 7.7.1
+      semver: 7.7.2
       temp-dir: 2.0.0
       unique-string: 2.0.0
 
@@ -8490,6 +8474,12 @@ snapshots:
     optionalDependencies:
       '@nestjs/platform-express': 11.1.3(@nestjs/common@11.1.3(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.3)
 
+  '@nestjs/jwt@11.0.0(@nestjs/common@11.1.3(reflect-metadata@0.2.2)(rxjs@7.8.2))':
+    dependencies:
+      '@nestjs/common': 11.1.3(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@types/jsonwebtoken': 9.0.7
+      jsonwebtoken: 9.0.2
+
   '@nestjs/platform-express@11.1.3(@nestjs/common@11.1.3(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.3)':
     dependencies:
       '@nestjs/common': 11.1.3(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -9054,9 +9044,8 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
-  '@types/jsonwebtoken@9.0.10':
+  '@types/jsonwebtoken@9.0.7':
     dependencies:
-      '@types/ms': 2.1.0
       '@types/node': 22.15.3
 
   '@types/methods@1.1.4': {}
@@ -9064,8 +9053,6 @@ snapshots:
   '@types/mime@1.3.5': {}
 
   '@types/minimatch@5.1.2': {}
-
-  '@types/ms@2.1.0': {}
 
   '@types/node@22.15.3':
     dependencies:
@@ -9219,7 +9206,7 @@ snapshots:
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.7.1
+      semver: 7.7.2
       ts-api-utils: 2.1.0(typescript@5.8.2)
       typescript: 5.8.2
     transitivePeerDependencies:
@@ -9233,7 +9220,7 @@ snapshots:
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.7.1
+      semver: 7.7.2
       ts-api-utils: 2.1.0(typescript@5.8.3)
       typescript: 5.8.3
     transitivePeerDependencies:
@@ -9815,11 +9802,6 @@ snapshots:
 
   basic-ftp@5.0.5: {}
 
-  bcrypt@6.0.0:
-    dependencies:
-      node-addon-api: 8.4.0
-      node-gyp-build: 4.8.4
-
   better-opn@3.0.2:
     dependencies:
       open: 8.4.2
@@ -9829,7 +9811,7 @@ snapshots:
   bin-version-check@5.1.0:
     dependencies:
       bin-version: 6.0.0
-      semver: 7.7.1
+      semver: 7.7.2
       semver-truncate: 3.0.0
 
   bin-version@6.0.0:
@@ -11666,7 +11648,7 @@ snapshots:
 
   is-bun-module@2.0.0:
     dependencies:
-      semver: 7.7.1
+      semver: 7.7.2
 
   is-callable@1.2.7: {}
 
@@ -11810,7 +11792,7 @@ snapshots:
       '@babel/parser': 7.27.2
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.2.2
-      semver: 7.7.1
+      semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
 
@@ -12118,7 +12100,7 @@ snapshots:
       jest-util: 29.7.0
       natural-compare: 1.4.0
       pretty-format: 29.7.0
-      semver: 7.7.1
+      semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
 
@@ -12410,7 +12392,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.7.1
+      semver: 7.7.2
 
   make-error@1.3.6: {}
 
@@ -12774,8 +12756,6 @@ snapshots:
 
   node-abort-controller@3.1.1: {}
 
-  node-addon-api@8.4.0: {}
-
   node-emoji@1.11.0:
     dependencies:
       lodash: 4.17.21
@@ -12785,8 +12765,6 @@ snapshots:
       whatwg-url: 5.0.0
 
   node-forge@1.3.1: {}
-
-  node-gyp-build@4.8.4: {}
 
   node-int64@0.4.0: {}
 
@@ -12814,7 +12792,7 @@ snapshots:
     dependencies:
       hosted-git-info: 7.0.2
       proc-log: 4.2.0
-      semver: 7.7.1
+      semver: 7.7.2
       validate-npm-package-name: 5.0.1
 
   npm-run-path@4.0.1:
@@ -13638,7 +13616,7 @@ snapshots:
 
   semver-truncate@3.0.0:
     dependencies:
-      semver: 7.7.1
+      semver: 7.7.2
 
   semver@6.3.1: {}
 
